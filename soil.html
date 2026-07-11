@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soil 101 — BonFields Landscaping</title>
+<meta name="description" content="Understand the soil under your lawn: the layers, why soil differs across America, what Indiana clay means for your yard, and how to improve it over time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#3a5a3c; --forest-deep:#2f4a32; --sage:#6b8a5e;
+  --cream:#e9e1cf; --cream-light:#f1ebdc; --cream-deep:#ddd2ba;
+  --paper:#e4dcc6; --gold:#b8902f; --ink:#3a3a30; --muted:#6a6a5a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:18px;overflow-x:hidden;}
+header{position:sticky;top:0;z-index:50;background:rgba(233,225,207,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--cream-deep);}
+nav{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+nav .name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--forest);letter-spacing:1px;text-decoration:none;}
+nav .name small{display:block;font-size:10px;letter-spacing:4px;color:var(--muted);font-weight:400;}
+nav .links a{color:var(--ink);text-decoration:none;margin-left:22px;font-size:16px;}
+nav .links a:hover{color:var(--forest);}
+.hero{padding:70px 24px 50px;text-align:center;}
+.eyebrow{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;color:var(--forest-deep);line-height:1.2;}
+.rule{width:70px;height:2px;background:var(--gold);margin:22px auto;}
+.lede{max-width:640px;margin:0 auto;font-size:20px;font-style:italic;color:var(--muted);}
+section{padding:50px 24px;}
+.wrap{max-width:960px;margin:0 auto;}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:32px;color:var(--forest-deep);margin-bottom:14px;text-align:center;}
+h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--forest-deep);margin-bottom:8px;}
+p{margin-bottom:14px;}
+.layers-flex{display:flex;gap:36px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+.layers-flex svg{flex:0 0 300px;max-width:100%;}
+.layers-text{flex:1;min-width:260px;max-width:420px;}
+.layers-text p{font-size:17px;}
+.map-card{background:var(--cream-light);border:1px solid var(--cream-deep);border-radius:8px;padding:28px;margin-top:26px;}
+.legend{display:flex;flex-wrap:wrap;gap:14px 20px;justify-content:center;margin-bottom:18px;font-size:15px;}
+.legend span{display:flex;align-items:center;gap:7px;}
+.legend i{width:13px;height:13px;border-radius:3px;display:inline-block;}
+#soilMap{width:100%;}
+.map-note{text-align:center;font-size:15px;color:var(--muted);font-style:italic;margin-top:12px;}
+.region-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px;}
+.region-card{background:var(--cream-light);border:1px solid var(--cream-deep);border-radius:8px;padding:26px;display:flex;flex-direction:column;}
+.region-card.highlight{border:2px solid var(--forest);background:#eef0e2;}
+.region-card svg{width:100%;height:auto;margin:10px 0 16px;}
+.region-card .depth{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.region-card p{font-size:16.5px;margin-bottom:10px;}
+.region-card .feel{font-style:italic;color:var(--muted);}
+.region-card .label-strong{font-weight:600;color:var(--forest-deep);}
+.strive{background:var(--forest);color:var(--cream-light);border-radius:8px;padding:40px 34px;margin-top:50px;}
+.strive h2{color:var(--cream-light);}
+.strive p{color:var(--cream-light);opacity:.95;}
+.strive .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px;}
+.strive .step h3{color:#e3c87a;font-size:20px;}
+.strive .step p{font-size:16px;}
+.cta{text-align:center;padding:50px 24px 70px;}
+.btn{display:inline-block;padding:13px 34px;border-radius:4px;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--forest);color:var(--forest);transition:all .2s;}
+.btn:hover{background:var(--forest);color:var(--cream-light);}
+footer{background:var(--forest-deep);color:var(--cream-light);text-align:center;padding:30px 20px;font-size:15px;}
+footer a{color:#e3c87a;text-decoration:none;}
+@media(max-width:700px){
+  .region-grid{grid-template-columns:1fr;}
+  .strive .steps{grid-template-columns:1fr;}
+  h1{font-size:34px;}
+  nav .links a{margin-left:14px;font-size:14px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+  <a class="name" href="index.html">BonFields<small>LANDSCAPING</small></a>
+  <div class="links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="design.html">Design</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Soil 101</p>
+  <h1>The Ground Beneath Your Grass</h1>
+  <div class="rule"></div>
+  <p class="lede">Every lawn is only as good as the soil under it. Here is what soil is made of, why it differs from place to place, and what that means for your yard.</p>
+</div>
+
+<section>
+<div class="wrap">
+  <h2>Soil Comes in Layers</h2>
+  <div class="layers-flex">
+    <svg viewBox="0 0 300 300" role="img" aria-label="Soil layers: organic layer, topsoil, subsoil, parent material">
+      <rect x="20" y="20" width="200" height="30" fill="#4a3c28"/>
+      <rect x="20" y="50" width="200" height="70" fill="#3a2f1e"/>
+      <rect x="20" y="120" width="200" height="90" fill="#8a5a30"/>
+      <rect x="20" y="210" width="200" height="60" fill="#a89680"/>
+      <rect x="20" y="20" width="200" height="250" fill="none" stroke="#6a6a5a" stroke-width="1"/>
+      <path d="M70 28 q4 -12 8 0" stroke="#2f4a32" stroke-width="2" fill="none"/>
+      <path d="M130 28 q4 -12 8 0" stroke="#2f4a32" stroke-width="2" fill="none"/>
+      <path d="M180 28 q4 -12 8 0" stroke="#2f4a32" stroke-width="2" fill="none"/>
+      <text x="232" y="40" font-size="13" fill="#3a3a30" font-family="Georgia,serif">Organic layer</text>
+      <text x="232" y="90" font-size="13" fill="#3a3a30" font-family="Georgia,serif">Topsoil</text>
+      <text x="232" y="168" font-size="13" fill="#3a3a30" font-family="Georgia,serif">Subsoil</text>
+      <text x="232" y="243" font-size="13" fill="#3a3a30" font-family="Georgia,serif">Parent</text>
+      <text x="232" y="258" font-size="13" fill="#3a3a30" font-family="Georgia,serif">material</text>
+    </svg>
+    <div class="layers-text">
+      <p><span class="label-strong">Organic layer</span> — leaves, clippings, thatch, and mulch resting on the surface, slowly breaking down into food for everything below.</p>
+      <p><span class="label-strong">Topsoil</span> — the dark, living layer where roots, nutrients, water, and earthworms are. This layer is the whole game. Deeper and darker is better.</p>
+      <p><span class="label-strong">Subsoil</span> — denser and paler, low in life and nutrients. In central Indiana this is heavy clay.</p>
+      <p><span class="label-strong">Parent material</span> — the raw ground the soil formed from: glacial till here, bedrock or sand elsewhere.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section style="padding-top:10px;">
+<div class="wrap">
+  <h2>Soil Across America</h2>
+  <p style="text-align:center;max-width:640px;margin:0 auto 6px;">Climate and history write the soil. Grasslands built deep topsoil, forests fed rich forest floors, glaciers pressed down clay or scraped land to the rock, and deserts stayed too dry to build much topsoil at all. Where you live sets your starting point.</p>
+  <div class="map-card">
+    <div class="legend">
+      <span><i style="background:#2b2418"></i>Prairie deep topsoil</span>
+      <span><i style="background:#8a5a30"></i>Glacial clay</span>
+      <span><i style="background:#9e3d1e"></i>Southeast red clay</span>
+      <span><i style="background:#d4b886"></i>Southwest sand &amp; caliche</span>
+      <span><i style="background:#3a5a3c"></i>Northwest volcanic loam</span>
+      <span><i style="background:#7d6a52"></i>Northeast rocky &amp; thin</span>
+    </div>
+    <div id="soilMap"></div>
+    <p class="map-note">General patterns — soil varies yard to yard, and every state has exceptions. A soil test is the only way to know yours.</p>
+  </div>
+</div>
+</section>
+
+<section style="padding-top:10px;">
+<div class="wrap">
+  <h2>Six Soils, Six Stories</h2>
+  <div class="region-grid">
+
+    <div class="region-card">
+      <h3>Prairie Midwest</h3>
+      <p class="depth">Topsoil: 12&ndash;24+ inches</p>
+      <svg viewBox="0 0 320 130" aria-hidden="true">
+        <rect x="0" y="0" width="320" height="8" fill="#3d3020"/>
+        <rect x="0" y="8" width="320" height="62" fill="#2b2418"/>
+        <rect x="0" y="70" width="320" height="38" fill="#6b4f30"/>
+        <rect x="0" y="108" width="320" height="22" fill="#a89680"/>
+      </svg>
+      <p><span class="label-strong">Why it's this way:</span> centuries of tallgrass prairie growing, dying back, and regrowing — each year's roots becoming next year's soil — built some of the deepest, richest topsoil on Earth.</p>
+      <p><span class="label-strong">For plants:</span> nearly ideal. Loamy, near-neutral pH, loaded with nutrients and organic matter. This is why the region feeds the world.</p>
+      <p class="feel">Underfoot: soft and springy, like walking on a firm mattress. Dark and crumbly in the hand.</p>
+      <p><span class="label-strong">The work:</span> maintain it. Don't compact it, keep organic matter cycling, and it stays this way.</p>
+    </div>
+
+    <div class="region-card highlight">
+      <h3>Central Indiana — Home</h3>
+      <p class="depth">Topsoil: 4&ndash;8 inches over dense clay</p>
+      <svg viewBox="0 0 320 130" aria-hidden="true">
+        <rect x="0" y="0" width="320" height="8" fill="#3d3020"/>
+        <rect x="0" y="8" width="320" height="20" fill="#3a2f1e"/>
+        <rect x="0" y="28" width="320" height="72" fill="#8a5a30"/>
+        <rect x="0" y="100" width="320" height="30" fill="#9c9280"/>
+      </svg>
+      <p><span class="label-strong">Why it's this way:</span> glaciers once covered this ground and left behind "till" — clay, silt, and stone ground together and pressed dense under the weight of the ice. A modest topsoil layer has formed on top since.</p>
+      <p><span class="label-strong">For plants:</span> the clay actually holds nutrients and water well — the problem is density. Roots struggle to push through, water perches on top in spring, and the surface bakes hard in summer droughts. pH is usually near neutral, so lime is rarely needed here.</p>
+      <p class="feel">Underfoot: soggy and sticky in spring, firm to concrete-hard by August. If your yard cracks in a dry summer, that's the clay talking.</p>
+      <p><span class="label-strong">The work:</span> you can't change the clay, but you can make it behave like good soil. Core aeration opens it up so air, water, and roots can move; compost and returned clippings slowly thicken the topsoil. Expect visible improvement in 2&ndash;3 seasons and a genuinely different lawn in about 5 years of consistent care.</p>
+    </div>
+
+    <div class="region-card">
+      <h3>Southeast</h3>
+      <p class="depth">Topsoil: 2&ndash;6 inches over red clay</p>
+      <svg viewBox="0 0 320 130" aria-hidden="true">
+        <rect x="0" y="0" width="320" height="6" fill="#3d3020"/>
+        <rect x="0" y="6" width="320" height="16" fill="#4a3826"/>
+        <rect x="0" y="22" width="320" height="82" fill="#9e3d1e"/>
+        <rect x="0" y="104" width="320" height="26" fill="#b06a45"/>
+      </svg>
+      <p><span class="label-strong">Why it's this way:</span> generations of heat and heavy rain weathered the ground into iron-rich clay — the red is literally rust — and all that rainfall washed calcium and other nutrients downward out of reach.</p>
+      <p><span class="label-strong">For plants:</span> acidic (often pH 4.5&ndash;5.5) and hungry. Nutrients wash out faster than they build up, so lime and regular feeding are a way of life for Southern lawns.</p>
+      <p class="feel">Underfoot: slick and greasy when wet — red clay stains everything — then brick-hard when dry.</p>
+      <p><span class="label-strong">The work:</span> lime to raise pH, organic matter to build the thin topsoil. Ongoing, not one-time: the climate keeps leaching, so the care keeps going.</p>
+    </div>
+
+    <div class="region-card">
+      <h3>Southwest</h3>
+      <p class="depth">Topsoil: 0&ndash;2 inches, often none</p>
+      <svg viewBox="0 0 320 130" aria-hidden="true">
+        <rect x="0" y="0" width="320" height="12" fill="#b3986a"/>
+        <rect x="0" y="12" width="320" height="52" fill="#d4b886"/>
+        <rect x="0" y="64" width="320" height="26" fill="#e6ddc4"/>
+        <rect x="0" y="90" width="320" height="40" fill="#c9ad7d"/>
+      </svg>
+      <p><span class="label-strong">Why it's this way:</span> with little rain there are few plants, and with few plants there's little dying back to become topsoil. In many places minerals hardened underground into caliche — a natural cement layer people need a pickaxe to plant through.</p>
+      <p><span class="label-strong">For plants:</span> sandy, alkaline, and very low in organic matter. Water drains through instantly or sits on caliche. Desert plants are built for exactly this — thirsty lawns are not.</p>
+      <p class="feel">Underfoot: loose and gritty, sometimes with a crunchy crust. Nothing springy about it.</p>
+      <p><span class="label-strong">The work:</span> this soil is meant to be this way — the climate made it. The wise path is working with it: native and desert-adapted plants, drip irrigation, mulch to hold every drop. Fighting for a Midwest-style lawn there means fighting the climate forever.</p>
+    </div>
+
+    <div class="region-card">
+      <h3>Pacific Northwest</h3>
+      <p class="depth">Topsoil: 8&ndash;20 inches, rich but acidic</p>
+      <svg viewBox="0 0 320 130" aria-hidden="true">
+        <rect x="0" y="0" width="320" height="14" fill="#2e2416"/>
+        <rect x="0" y="14" width="320" height="44" fill="#3a2c1a"/>
+        <rect x="0" y="58" width="320" height="46" fill="#7a4a2e"/>
+        <rect x="0" y="104" width="320" height="26" fill="#8f8578"/>
+      </svg>
+      <p><span class="label-strong">Why it's this way:</span> volcanic ash and old lava broke down into deep, dark loam, and evergreen forests have fed it a steady diet of needles and leaves ever since — that spongy "duff" layer on any forest floor is soil in the making.</p>
+      <p><span class="label-strong">For plants:</span> rich and fertile, but the constant rain washes minerals down and leaves it acidic — which moss loves. Lawns there battle moss the way we battle clay.</p>
+      <p class="feel">Underfoot: soft, damp, and spongy, especially under trees. The forest floor gives under every step.</p>
+      <p><span class="label-strong">The work:</span> lime to ease the acidity, drainage and sunlight to hold back moss. The fertility is free; the balance takes upkeep.</p>
+    </div>
+
+    <div class="region-card">
+      <h3>Northeast</h3>
+      <p class="depth">Topsoil: 2&ndash;8 inches, full of stone</p>
+      <svg viewBox="0 0 320 130" aria-hidden="true">
+        <rect x="0" y="0" width="320" height="10" fill="#3d3020"/>
+        <rect x="0" y="10" width="320" height="22" fill="#3a2f1e"/>
+        <rect x="0" y="32" width="320" height="64" fill="#7d6a52"/>
+        <circle cx="70" cy="55" r="8" fill="#9c9280"/>
+        <circle cx="160" cy="72" r="11" fill="#8f8578"/>
+        <circle cx="240" cy="50" r="6" fill="#9c9280"/>
+        <circle cx="110" cy="84" r="7" fill="#8f8578"/>
+        <rect x="0" y="96" width="320" height="34" fill="#6e6a62"/>
+      </svg>
+      <p><span class="label-strong">Why it's this way:</span> the same ice that pressed Indiana's clay flat scraped New England down toward the rock, leaving thin, stony ground with bedrock close to the surface. Early farmers pulled so many stones from their fields that the region is famous for its stone walls.</p>
+      <p><span class="label-strong">For plants:</span> shallow, often acidic under pine and hemlock, and interrupted by rock. Roots run out of room before they run out of ambition.</p>
+      <p class="feel">Underfoot: firm and uneven — you feel the stones. A shovel rings off rock more often than not.</p>
+      <p><span class="label-strong">The work:</span> work around the rock rather than against it — raised beds, imported topsoil for gardens, and lime where conifers have soured the ground.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<section style="padding-top:10px;">
+<div class="wrap">
+  <div class="strive">
+    <h2>What Good Soil Is — and How to Get There</h2>
+    <p style="text-align:center;max-width:680px;margin:0 auto 8px;">Wherever you start, good soil looks the same: dark, crumbly, soft underfoot, alive with worms, holding moisture without staying soggy. You can't change what the ground is made of — but you can change how it behaves. The recipe is the same everywhere; only the starting point differs.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Open It Up</h3>
+        <p>Core aeration relieves compaction so air, water, and roots can move. On Indiana clay, once a year in fall is the single highest-impact thing you can do.</p>
+      </div>
+      <div class="step">
+        <h3>Feed It</h3>
+        <p>Organic matter is the only true long-term soil improver: returned clippings, mulched leaves, compost topdressing. Soft green material feeds the soil in weeks; wood and bark take years — that's why mulch lasts, breaking down slowly from the bottom where it touches soil.</p>
+      </div>
+      <div class="step">
+        <h3>Give It Time</h3>
+        <p>Soil improves on nature's schedule, not ours. Expect a noticeably better lawn in 2&ndash;3 seasons and truly changed soil in about 5 years of consistent care. Every season of good habits compounds.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="cta">
+  <p style="font-style:italic;color:var(--muted);margin-bottom:18px;">Not sure what your soil is doing? We look at it on every first visit.</p>
+  <a href="index.html#contact" class="btn">Request a Quote</a>
+</div>
+
+<footer>
+  BonFields LLC &middot; Fishers, Indiana &middot; <a href="mailto:cameron@bonfields.net">cameron@bonfields.net</a>
+  <div style="margin-top:8px;opacity:.7;">&copy; 2026 BonFields LLC. All rights reserved.</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const regions = {
+'Iowa':'prairie','Illinois':'prairie','Minnesota':'prairie','Nebraska':'prairie','Kansas':'prairie','South Dakota':'prairie','North Dakota':'prairie','Missouri':'prairie',
+'Indiana':'glacial','Ohio':'glacial','Michigan':'glacial','Wisconsin':'glacial',
+'Georgia':'redclay','Alabama':'redclay','South Carolina':'redclay','North Carolina':'redclay','Tennessee':'redclay','Mississippi':'redclay','Virginia':'redclay','Kentucky':'redclay','Louisiana':'redclay','Arkansas':'redclay','Florida':'redclay','West Virginia':'redclay',
+'Arizona':'desert','New Mexico':'desert','Nevada':'desert','Utah':'desert','Texas':'desert','Oklahoma':'desert','Colorado':'desert','California':'desert','Wyoming':'desert','Montana':'desert',
+'Washington':'pnw','Oregon':'pnw','Idaho':'pnw',
+'Maine':'ne','New Hampshire':'ne','Vermont':'ne','Massachusetts':'ne','Connecticut':'ne','Rhode Island':'ne','New York':'ne','Pennsylvania':'ne','New Jersey':'ne','Maryland':'ne','Delaware':'ne'
+};
+const fills = {prairie:'#2b2418',glacial:'#8a5a30',redclay:'#9e3d1e',desert:'#d4b886',pnw:'#3a5a3c',ne:'#7d6a52'};
+const svg = d3.select('#soilMap').append('svg').attr('viewBox','0 0 900 560').attr('width','100%');
+const path = d3.geoPath(d3.geoAlbersUsa().scale(1100).translate([450,280]));
+d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
+  svg.selectAll('path').data(topojson.feature(us, us.objects.states).features).join('path')
+    .attr('d', path)
+    .attr('stroke', '#f1ebdc')
+    .attr('stroke-width', 0.8)
+    .attr('fill', d => {
+      const r = regions[d.properties.name];
+      return r ? fills[r] : '#ddd2ba';
+    })
+    .append('title').text(d => d.properties.name);
+  const ind = topojson.feature(us, us.objects.states).features.find(d => d.properties.name === 'Indiana');
+  if (ind) {
+    const c = path.centroid(ind);
+    svg.append('circle').attr('cx',c[0]).attr('cy',c[1]).attr('r',6).attr('fill','#f1ebdc').attr('stroke','#3a5a3c').attr('stroke-width',2.5);
+    svg.append('text').attr('x',c[0]+14).attr('y',c[1]+5).attr('font-size','15').attr('font-weight','600').attr('fill','#2b2418').attr('font-family','Georgia,serif').text('Home');
+  }
+});
+</script>
+
+</body>
+</html>

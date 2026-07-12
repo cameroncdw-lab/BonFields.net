@@ -192,6 +192,16 @@ footer{position:relative;z-index:2;background:var(--forest-deep);color:#b9c4ad;t
   .fact-row .fact-label{min-width:100px;}
 }
 @media(max-width:480px){.cards-grid{grid-template-columns:1fr 1fr;gap:12px;}.card-body h3{font-size:19px;}}
+
+  .filters-toggle{display:none;}
+  @media(max-width:700px){
+    .filters-toggle{display:inline-flex;align-items:center;gap:8px;margin:10px 0 4px;padding:9px 18px;border:1.5px solid var(--forest,#3a5a3c);border-radius:6px;background:transparent;color:var(--forest,#3a5a3c);font-family:inherit;font-size:15px;cursor:pointer;}
+    .filters-toggle svg{transition:transform .2s;}
+    .filters-toggle.open svg{transform:rotate(180deg);}
+    .filters-toggle #filterCount:not(:empty){background:var(--forest,#3a5a3c);color:#f1ebdc;border-radius:10px;padding:1px 8px;font-size:12px;}
+    .filter-panel{display:none;}
+    .filter-panel.open{display:block;}
+  }
 </style>
 </head>
 <body>
@@ -239,6 +249,8 @@ footer{position:relative;z-index:2;background:var(--forest-deep);color:#b9c4ad;t
       </div>
       <span class="result-count" id="resultCount"></span>
     </div>
+    <button class="filters-toggle" id="filtersToggle" aria-expanded="false">Filters <span id="filterCount"></span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="filter-panel" id="filterPanel">
     <div class="filter-row" id="filterRow">
       <span class="filter-label">Type:</span>
       <button class="filter-chip active" data-group="type" data-filter="all">All</button>
@@ -286,6 +298,7 @@ footer{position:relative;z-index:2;background:var(--forest-deep);color:#b9c4ad;t
       <button class="filter-chip" data-group="attr" data-filter="wildlife"><span class="chip-dot" style="background:#4a6a8a"></span>Wildlife</button>
       <button class="clear-btn" id="clearBtn">Clear all</button>
     </div>
+    </div><!-- /filterPanel -->
   </div>
 </div>
 
@@ -470,6 +483,7 @@ function lightMeter(level){
 function factIcon(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>'; }
 
 function renderGrid(){
+  if(typeof updateFilterCount==="function") try{updateFilterCount();}catch(e){}
   const grid = document.getElementById('cardGrid');
   const empty = document.getElementById('emptyState');
   const countEl = document.getElementById('resultCount');
@@ -757,6 +771,24 @@ document.addEventListener('keydown',e=>{
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
 
 renderGrid();
+
+// Mobile filter panel toggle
+const ftBtn = document.getElementById('filtersToggle');
+const fPanel = document.getElementById('filterPanel');
+if(ftBtn && fPanel){
+  ftBtn.addEventListener('click',()=>{
+    const open = fPanel.classList.toggle('open');
+    ftBtn.classList.toggle('open', open);
+    ftBtn.setAttribute('aria-expanded', open);
+  });
+}
+function updateFilterCount(){
+  const el = document.getElementById('filterCount');
+  if(!el) return;
+  let n = 0;
+  Object.values(sel).forEach(s=>n+=s.size);
+  el.textContent = n>0 ? n : '';
+}
 </script>
 </body>
 </html>

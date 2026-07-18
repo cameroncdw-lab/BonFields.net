@@ -77,10 +77,11 @@ nav{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-conte
 .zone-map-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center;}
 .zone-map-svg svg{width:100%;height:auto;display:block;}
 .zstate{pointer-events:none;stroke:#f3ede0;stroke-width:0.7;}
-.zstate.sel{stroke:#2f4a32;stroke-width:2.2;}
 .zoneband{fill:transparent;cursor:pointer;transition:fill .15s;}
 .zoneband:hover{fill:rgba(47,74,50,0.12);}
-.zoneband.sel{fill:rgba(47,74,50,0.32);}
+.zoneband.sel{fill:transparent;}
+#usZoneMap.has-sel .zoneband:not(.sel){fill:rgba(233,225,207,0.82);}
+#usZoneMap.has-sel .zoneband:not(.sel):hover{fill:rgba(233,225,207,0.5);}
 .zone-legend h4{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--forest-deep);margin-bottom:12px;}
 .zleg{display:flex;align-items:center;gap:10px;width:100%;background:none;border:1px solid transparent;border-radius:3px;padding:7px 10px;font-family:'EB Garamond',serif;font-size:15px;color:var(--ink);cursor:pointer;text-align:left;transition:all .15s;}
 .zleg:hover{background:rgba(58,90,60,0.06);}
@@ -879,7 +880,7 @@ document.getElementById('clearBtn').addEventListener('click',()=>{
 // ---- Zone map interactions ----
 function syncZoneUI(){
   document.querySelectorAll('.zoneband').forEach(b=>b.classList.toggle('sel', sel.zone.has(b.dataset.zone)));
-  document.querySelectorAll('.zstate').forEach(s=>s.classList.toggle('sel', sel.zone.has(s.dataset.zone)));
+  document.getElementById('usZoneMap').classList.toggle('has-sel', sel.zone.size>0);
   document.querySelectorAll('.zleg').forEach(b=>b.classList.toggle('sel', sel.zone.has(b.dataset.zone)));
   const ro = document.getElementById('zoneReadout');
   if(sel.zone.size){
